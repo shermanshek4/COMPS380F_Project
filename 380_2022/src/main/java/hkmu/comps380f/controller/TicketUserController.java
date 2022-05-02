@@ -32,6 +32,10 @@ public class TicketUserController {
         private String username;
         private String password;
         private String[] roles;
+        
+        private String fullname;
+        private String address;
+        private String phonenumber;
 
         // ... getters and setters for each of the properties
         public String getUsername() {
@@ -57,6 +61,32 @@ public class TicketUserController {
         public void setRoles(String[] roles) {
             this.roles = roles;
         }
+
+        public String getFullname() {
+            return fullname;
+        }
+
+        public void setFullname(String fullname) {
+            this.fullname = fullname;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getPhonenumber() {
+            return phonenumber;
+        }
+
+        public void setPhonenumber(String phonenumber) {
+            this.phonenumber = phonenumber;
+        }
+        
+        
     }
 
     @GetMapping("/create")
@@ -67,7 +97,7 @@ public class TicketUserController {
     @PostMapping("/create")
     public View create(Form form) throws IOException {
         TicketUser user = new TicketUser(form.getUsername(),
-                form.getPassword(), form.getRoles());
+                form.getPassword(), form.getRoles(), form.getFullname(), form.getAddress(), form.getPhonenumber());
         ticketUserRepo.save(user);
         return new RedirectView("/user/list", true);
     }

@@ -26,9 +26,10 @@
     </b:bean> 
 
     <http>
-        <intercept-url pattern="/user/**" access="hasRole('ADMIN')" /> 
+        <intercept-url pattern="/user/list" access="hasRole('ROLE_LECTURER')" /> 
+        
         <intercept-url pattern="/ticket/delete/**" access="hasRole('ADMIN')" /> 
-        <intercept-url pattern="/ticket/**" access="hasAnyRole('USER','ADMIN')" />
+        <intercept-url pattern="/ticket/**" access="hasAnyRole('USER','ADMIN','ROLE_LECTURER','ROLE_STUDENT')" />
         <form-login login-page="/cslogin" login-processing-url="/cslogin"
                     authentication-failure-url="/cslogin?error" />
         <logout logout-url="/cslogout" logout-success-url="/cslogin?logout"

@@ -13,9 +13,17 @@
     <form:input type="text" path="username" /><br/><br/>
     <form:label path="password">Password</form:label><br/>
     <form:input type="text" path="password" /><br/><br/>
+    
+    <form:label path="fullname">Fullname</form:label><br/>
+    <form:input type="text" path="fullname" /><br/><br/>
+    <form:label path="address">Address</form:label><br/>
+    <form:input type="text" path="address" /><br/><br/>
+    <form:label path="phonenumber">Phonenumber</form:label><br/>
+    <form:input type="text" path="phonenumber" /><br/><br/>
+    
     <form:label path="roles">Roles</form:label><br/>
-    <form:checkbox path="roles" value="ROLE_USER" />ROLE_USER
-    <form:checkbox path="roles" value="ROLE_ADMIN" />ROLE_ADMIN
+    <form:checkbox path="roles" value="ROLE_STUDENT" />STUDENT
+    <form:checkbox path="roles" value="ROLE_LECTURER" />LECTURER
     <br /><br />
     <input type="submit" value="Add User"/>
 </form:form>

@@ -11,8 +11,8 @@
 </form>
 
 <h2>Computer Science</h2>
-<security:authorize access="hasRole('ADMIN')">    
-    <a href="<c:url value="/user" />">Lectures</a><br /><br />
+<security:authorize access="hasRole('LECTURER')">    
+    <a href="<c:url value="/user" />">Manage user</a><br /><br />
 </security:authorize>
 <a href="<c:url value="/ticket/create" />">Multiple-choice polls</a><br /><br />
 <c:choose>
