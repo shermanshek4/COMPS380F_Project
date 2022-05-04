@@ -21,8 +21,8 @@ public class TicketUserController {
     @Resource
     TicketUserRepository ticketUserRepo;
 
-    @GetMapping({"", "/list"})
-    public String list(ModelMap model) {
+    @GetMapping({"", "/index"})
+    public String index(ModelMap model) {
         model.addAttribute("ticketUsers", ticketUserRepo.findAll());
         return "listUser";
     }
@@ -99,12 +99,12 @@ public class TicketUserController {
         TicketUser user = new TicketUser(form.getUsername(),
                 form.getPassword(), form.getRoles(), form.getFullname(), form.getAddress(), form.getPhonenumber());
         ticketUserRepo.save(user);
-        return new RedirectView("/user/list", true);
+        return new RedirectView("/user/ticket", true);
     }
 
     @GetMapping("/delete/{username}")
     public View deleteTicket(@PathVariable("username") String username) {
         ticketUserRepo.delete(ticketUserRepo.findById(username).orElse(null));
-        return new RedirectView("/user/list", true);
+        return new RedirectView("/user/ticket", true);
     }
 }

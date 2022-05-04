@@ -1,9 +1,9 @@
 CREATE TABLE users (
     username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
-address VARCHAR(50) NOT NULL,
-phonenumber VARCHAR(50) NOT NULL,
-fullname VARCHAR(50) NOT NULL,
+    address VARCHAR(50) NOT NULL,
+    phonenumber VARCHAR(50) NOT NULL,
+    fullname VARCHAR(50) NOT NULL,
     PRIMARY KEY (username)
 );
 

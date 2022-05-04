@@ -7,6 +7,9 @@
     <input type="submit" value="Log out" />
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
+<br />
+<a href="<c:url value="/user" />">Cancel</a>
+
 <h2>Create a User</h2>
 <form:form method="POST" enctype="multipart/form-data" modelAttribute="ticketUser">
     <form:label path="username">Username</form:label><br/>

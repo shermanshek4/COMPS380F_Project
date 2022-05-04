@@ -9,6 +9,8 @@
     <input type="submit" value="Log out" />
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
+<br />
+<a href="<c:url value="/ticket/index" />">Return to index page</a>
 
 <h2>Multiple-choice polls</h2>
     <form:form method="POST" enctype="multipart/form-data"

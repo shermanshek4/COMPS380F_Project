@@ -8,9 +8,11 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 <br /><br />
-<a href="<c:url value="/ticket" />">Return to index page</a>
+<a href="<c:url value="/ticket/index" />">Return to index page</a>
+
 <h2>Lectures</h2>
 <a href="<c:url value="/user/create" />">Create a User</a><br /><br />
+<a href="<c:url value="/user/create" />">Create a course material</a><br /><br />
 <c:choose>
     <c:when test="${fn:length(ticketUsers) == 0}">
         <i>There are no users in the system.</i>

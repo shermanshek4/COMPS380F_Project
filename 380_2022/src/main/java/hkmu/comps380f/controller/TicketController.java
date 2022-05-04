@@ -34,10 +34,10 @@ public class TicketController {
     private AttachmentService attachmentService;
 
     // Controller methods, Form object, ...
-    @GetMapping({"", "/list"})
-    public String list(ModelMap model) {
+    @GetMapping({"", "/index"})
+    public String index(ModelMap model) {
         model.addAttribute("ticketDatabase", ticketService.getTickets());
-        return "list";
+        return "index";
     }
 
     @GetMapping("/create")
@@ -88,7 +88,7 @@ public class TicketController {
     public String view(@PathVariable("ticketId") long ticketId, ModelMap model) {
         Ticket ticket = ticketService.getTicket(ticketId);
         if (ticket == null) {
-            return "redirect:/ticket/list";
+            return "redirect:/ticket/index";
         }
         model.addAttribute("ticket", ticket);
         return "view";
@@ -103,7 +103,7 @@ public class TicketController {
             return new DownloadingView(attachment.getName(),
                     attachment.getMimeContentType(), attachment.getContents());
         }
-        return new RedirectView("/ticket/list", true);
+        return new RedirectView("/ticket/index", true);
     }
 
     @GetMapping("/{ticketId}/delete/{attachment:.+}")
@@ -120,7 +120,7 @@ public class TicketController {
         if (ticket == null
                 || (!request.isUserInRole("ROLE_ADMIN")
                 && !principal.getName().equals(ticket.getCustomerName()))) {
-            return new ModelAndView(new RedirectView("/ticket/list", true));
+            return new ModelAndView(new RedirectView("/ticket/index", true));
         }
 
         ModelAndView modelAndView = new ModelAndView("edit");
@@ -142,7 +142,7 @@ public class TicketController {
         if (ticket == null
                 || (!request.isUserInRole("ROLE_ADMIN")
                 && !principal.getName().equals(ticket.getCustomerName()))) {
-            return "redirect:/ticket/list";
+            return "redirect:/ticket/index";
         }
 
         ticketService.updateTicket(ticketId, form.getSubject(),
@@ -154,7 +154,7 @@ public class TicketController {
     public String deleteTicket(@PathVariable("ticketId") long ticketId)
             throws TicketNotFound {
         ticketService.delete(ticketId);
-        return "redirect:/ticket/list";
+        return "redirect:/ticket/index";
     }
 
 }
