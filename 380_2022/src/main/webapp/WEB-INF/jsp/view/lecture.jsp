@@ -10,11 +10,12 @@
 <br /><br />
 <a href="<c:url value="/ticket/index" />">Return to index page</a>
 
-<h2>Users</h2>
-<a href="<c:url value="/user/create" />">Create a User</a><br /><br />
+<h2>Lectures</h2>
+
+<a href="<c:url value="/lecture/create" />">Create a course material</a><br /><br />
 <c:choose>
     <c:when test="${fn:length(ticketUsers) == 0}">
-        <i>There are no users in the system.</i>
+        <i>There are no lectures in the system.</i>
     </c:when>
     <c:otherwise>
     <table>

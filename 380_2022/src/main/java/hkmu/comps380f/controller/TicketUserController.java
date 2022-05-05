@@ -89,12 +89,12 @@ public class TicketUserController {
         
     }
 
-    @GetMapping("/create")
+    @GetMapping("/user")
     public ModelAndView create() {
         return new ModelAndView("addUser", "ticketUser", new Form());
     }
 
-    @PostMapping("/create")
+    @PostMapping("/user")
     public View create(Form form) throws IOException {
         TicketUser user = new TicketUser(form.getUsername(),
                 form.getPassword(), form.getRoles(), form.getFullname(), form.getAddress(), form.getPhonenumber());

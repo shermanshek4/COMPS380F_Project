@@ -12,12 +12,13 @@
 
 <h2>Computer Science</h2>
 <security:authorize access="hasRole('LECTURER')">    
-    <a href="<c:url value="/user" />">Lectures</a><br /><br />
+    <a href="<c:url value="/user" />">Manager Users</a><br /><br />
 </security:authorize>
+<a href="<c:url value="/ticket/lecture" />">Lectures</a><br /><br />
 <a href="<c:url value="/ticket/create" />">Multiple-Choice polls</a><br /><br />
 <c:choose>
     <c:when test="${fn:length(ticketDatabase) == 0}">
-        <i>There are no lectures in the system.</i>
+        <i>There are no users in the system.</i>
     </c:when>
     <c:otherwise>
         <c:forEach items="${ticketDatabase}" var="ticket">
