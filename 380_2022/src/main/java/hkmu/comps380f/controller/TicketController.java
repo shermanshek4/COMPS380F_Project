@@ -40,8 +40,8 @@ public class TicketController {
         return "index";
     }
 
-    @GetMapping("/create")
-    public ModelAndView create() {
+    @GetMapping("/addCourseMaterial")
+    public ModelAndView addCourseMaterial() {
         return new ModelAndView("mcPollsPage", "ticketForm", new Form());
     }
 
@@ -77,14 +77,14 @@ public class TicketController {
         }
     }
 
-    @PostMapping("/create")
-    public String create(Form form, Principal principal) throws IOException {
+    @PostMapping("/addCourseMaterial")
+    public String addCourseMaterial(Form form, Principal principal) throws IOException {
         long ticketId = ticketService.createTicket(principal.getName(),
                 form.getSubject(), form.getBody(), form.getAttachments());
-        return "redirect:/ticket/view/" + ticketId;
+        return "redirect:/ticket/FileInfoView/" + ticketId;
     }
 
-    @GetMapping("/view/{ticketId}")
+    @GetMapping("/FileInfoView/{ticketId}")
     public String view(@PathVariable("ticketId") long ticketId, ModelMap model) {
         Ticket ticket = ticketService.getTicket(ticketId);
         if (ticket == null) {
@@ -110,10 +110,10 @@ public class TicketController {
     public String deleteAttachment(@PathVariable("ticketId") long ticketId,
             @PathVariable("attachment") String name) throws AttachmentNotFound {
         ticketService.deleteAttachment(ticketId, name);
-        return "redirect:/ticket/edit/" + ticketId;
+        return "redirect:/ticket/editCourseMaterial/" + ticketId;
     }
 
-    @GetMapping("/edit/{ticketId}")
+    @GetMapping("/editCourseMaterial/{ticketId}")
     public ModelAndView showEdit(@PathVariable("ticketId") long ticketId,
             Principal principal, HttpServletRequest request) {
         Ticket ticket = ticketService.getTicket(ticketId);
@@ -134,7 +134,7 @@ public class TicketController {
         return modelAndView;
     }
 
-    @PostMapping("/edit/{ticketId}")
+    @PostMapping("/editCourseMaterial/{ticketId}")
     public String edit(@PathVariable("ticketId") long ticketId, Form form,
             Principal principal, HttpServletRequest request)
             throws IOException, TicketNotFound {
@@ -147,7 +147,7 @@ public class TicketController {
 
         ticketService.updateTicket(ticketId, form.getSubject(),
                 form.getBody(), form.getAttachments());
-        return "redirect:/ticket/view/" + ticketId;
+        return "redirect:/ticket/FileInfoView/" + ticketId;
     }
 
     @GetMapping("/delete/{ticketId}")
