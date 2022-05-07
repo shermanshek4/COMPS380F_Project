@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/ticket")
 public class LectureController {
 
-    @GetMapping("/lecture")
+    @GetMapping("/CourseMaterial")
     public String lecture() {
-        return "lecture";
+        return "CourseMaterial";
     }
 }

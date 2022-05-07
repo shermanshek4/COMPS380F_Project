@@ -88,10 +88,10 @@ public class TicketController {
     public String view(@PathVariable("ticketId") long ticketId, ModelMap model) {
         Ticket ticket = ticketService.getTicket(ticketId);
         if (ticket == null) {
-            return "redirect:/ticket/index";
+            return "redirect:/ticket/CourseMaterial";
         }
         model.addAttribute("ticket", ticket);
-        return "view";
+        return "FileInfoView";
     }
 
     @GetMapping("/{ticketId}/attachment/{attachment:.+}")
@@ -103,7 +103,7 @@ public class TicketController {
             return new DownloadingView(attachment.getName(),
                     attachment.getMimeContentType(), attachment.getContents());
         }
-        return new RedirectView("/ticket/index", true);
+        return new RedirectView("/ticket/CourseMaterial", true);
     }
 
     @GetMapping("/{ticketId}/delete/{attachment:.+}")
@@ -120,10 +120,10 @@ public class TicketController {
         if (ticket == null
                 || (!request.isUserInRole("ROLE_ADMIN")
                 && !principal.getName().equals(ticket.getCustomerName()))) {
-            return new ModelAndView(new RedirectView("/ticket/index", true));
+            return new ModelAndView(new RedirectView("/ticket/CourseMaterial", true));
         }
 
-        ModelAndView modelAndView = new ModelAndView("edit");
+        ModelAndView modelAndView = new ModelAndView("editCourseMaterial");
         modelAndView.addObject("ticket", ticket);
 
         Form ticketForm = new Form();
@@ -142,7 +142,7 @@ public class TicketController {
         if (ticket == null
                 || (!request.isUserInRole("ROLE_ADMIN")
                 && !principal.getName().equals(ticket.getCustomerName()))) {
-            return "redirect:/ticket/index";
+            return "redirect:/ticket/CourseMaterial";
         }
 
         ticketService.updateTicket(ticketId, form.getSubject(),
@@ -154,7 +154,7 @@ public class TicketController {
     public String deleteTicket(@PathVariable("ticketId") long ticketId)
             throws TicketNotFound {
         ticketService.delete(ticketId);
-        return "redirect:/ticket/index";
+        return "redirect:/ticket/CourseMaterial";
     }
 
 }
