@@ -33,6 +33,6 @@
     <input type="file" name="attachments" multiple="multiple"/><br/><br/>
     <input type="submit" value="Save"/><br/><br/>
 </form:form>
-<a href="<c:url value="/ticket" />">Return to Course Material Page</a>
+<a href="<c:url value="/ticket/CourseMaterial" />">Return to Course Material Page</a>
 </body>
 </html> 

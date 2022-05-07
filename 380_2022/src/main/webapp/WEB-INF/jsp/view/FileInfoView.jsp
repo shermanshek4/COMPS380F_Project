@@ -29,6 +29,6 @@
                     <c:out value="${attachment.name}" /></a>
             </c:forEach><br /><br />
         </c:if>
-        <a href="<c:url value="/ticket" />">Return to Course Material list</a>
+        <a href="<c:url value="/ticket/CourseMaterial" />">Return to Course Material list</a>
     </body>
 </html>
